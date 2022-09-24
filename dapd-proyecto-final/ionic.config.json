@@ -1,0 +1,7 @@
+{
+  "name": "dapd-proyecto-final",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

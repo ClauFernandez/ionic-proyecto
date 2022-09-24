@@ -1,0 +1,32 @@
+{
+    "users":[
+        {
+            "userName": "fernandobartoli",
+            "password": "fernando1234"
+        },
+        {
+            "userName": "lauradancoso",
+            "password": "laura1234"
+        },
+        {
+            "userName": "andresnegrette",
+            "password": "andres1234"
+        },
+        {
+            "userName": "gabrielaaskensolis",
+            "password": "gabriela1234"
+        },
+        {
+            "userName": "carolinasanguineti",
+            "password": "carolina1234"
+        },
+        {
+            "userName": "claudiafernandez",
+            "password": "claudia1234"
+        },
+        {
+            "userName": "invitado",
+            "password": "invitado1234"
+        }
+    ]
+}

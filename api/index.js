@@ -11,11 +11,11 @@ app.listen(port, ()=>{
 
 const users = require('./users.json');
 
-app.get('/users', (req, res)=>{
+app.get('/api/users', (req, res)=>{
     res.send(users)
 })
 
-app.post('/login', (req, res)=>{
+app.post('/api/login', (req, res)=>{
     try{
         let {user} = req.body;
 
@@ -36,6 +36,6 @@ app.post('/login', (req, res)=>{
     }
 })
 
-app.post('/logout', (req, res)=>{
+app.post('/api/logout', (req, res)=>{
     res.status(200).send({mesagge: "Logout has been successfully."})
 })

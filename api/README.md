@@ -1,1 +1,1 @@
-# ionic-proyecto
+Api para el proyecto final de la materia Desarrollo de aplicaciones móbiles

@@ -1,6 +1,6 @@
-# Proyecto final de la materia Desarrollo de Aplicaciones para Dispositivos
+## Proyecto final de la materia Desarrollo de Aplicaciones para Dispositivos
 
-### Api utilizada para el login/logout
+### API utilizada para el login/logout
 
-URL: ionic-ifts-api.vercel.app
-DOCUMENTACION: 
+- Url: [https://ionic-ifts-api.vercel.app/](https://ionic-ifts-api.vercel.app/)
+- [Documentación](https://github.com/ClauFernandez/ionic-proyecto/blob/main/api/README.md)

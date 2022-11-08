@@ -6,11 +6,13 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { RegistroService } from './shared/services/registro.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RegistrosComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, RegistroService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

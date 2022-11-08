@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "dapd-proyecto-final",
+	"appId": "ifts.ionic.misgastosapp",
+	"appName": "MIS GASTOS APP",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

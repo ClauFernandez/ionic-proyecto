@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { AuthService } from 'src/app/auth/servicios/auth.service';
+import { tap } from 'rxjs/operators';
+import { StorageService } from 'src/app/auth/servicios/storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private storageService: StorageService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.authService.loggedIn.asObservable()
+      return this.storageService.get('loggedIn')
       .pipe(
         tap(
           (isLoggedIn) => {

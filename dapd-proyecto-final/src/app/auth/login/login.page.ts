@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
       .subscribe(
         ({status, data: resp}) => {
           if(status === 200){
-            this.authService.loggedIn.next(true);
+            this.loginForm.reset();
             this.router.navigateByUrl('/dashboard');
           }else{
             this.mostrarToast(resp.mesagge, 'danger');

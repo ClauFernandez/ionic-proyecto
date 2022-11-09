@@ -1,0 +1,18 @@
+<div>
+  <h1>MIS GASTOS APP</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+    <ion-item class="ion-padding-bottom">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input formControlName="userName" placeholder="invitado"></ion-input>
+    </ion-item>
+    <ion-item class="ion-padding-bottom">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password" placeholder="invitado1234"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" [disabled]="!loginForm.valid">Ingresar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</div>

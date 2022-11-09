@@ -8,15 +8,15 @@ import { RegistroService } from 'src/app/shared/services/registro.service';
 })
 export class RegistrosComponent implements OnInit {
 
-  constructor(private resgistroService: RegistroService) { }
+  constructor(private registroService: RegistroService) { }
 
   ngOnInit() : void {
-    this.registros;
+    this.registroService.registros;
   }
 
 
 
   get registros(){
-    return this.resgistroService.getRegistro();
+    return this.registroService.registros;
   }
 }

@@ -1,5 +1,7 @@
-<ul>
-    <li *ngFor="let registro of registros">
-        {{registro.categoria}}
-    </li>       
-</ul>
+<ion-list>
+    <div *ngFor="let item of registros">
+        <ion-item >
+          <ion-label>{{item.titulo}}</ion-label>
+        </ion-item>
+    </div>
+</ion-list>

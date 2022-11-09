@@ -4,16 +4,25 @@ import { Registro } from '../models/models';
 @Injectable({
   providedIn: 'root'
 })
-export class RegistroService {
-  private _registros : Registro [] = [{
-    categoria:"categoria 1",
-    fecha:new Date(),
-    ingreso: true,
-    monto: 500,
-    titulo: "registro 1"
-  }];
 
-  getRegistro (): Registro  []{
+//TODO: eliminar estos registros
+export class RegistroService {
+
+  private _registros : Registro [] = [{
+    categoria: "2",
+    fecha: new Date(),
+    ingreso: true,
+    monto: 200,
+    titulo: "registroEj"
+
+  }];
+  
+
+  crearRegistro(registro : Registro){
+    this._registros.push(registro)
+  }
+
+  get registros (): Registro  []{
     return this._registros;
   }
 

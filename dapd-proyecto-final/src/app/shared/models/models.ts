@@ -3,10 +3,10 @@ export interface Usuario{
     password:string
 }
 
-export enum TipoRegistro{
-    Ingreso,
-    Egreso
-}
+// export enum TipoRegistro{
+//     Ingreso,
+//     Egreso
+// }
 
 export enum CategoriasIngreso{
     Sueldo,
@@ -30,11 +30,11 @@ export enum CategoriasEgreso{
 }
 
 export interface Registro{
-    fecha: Date
+    fecha: Date,
     ingreso: boolean,
     titulo: string,
     monto: number,
-    categoria: string,
+    categoria: CategoriasEgreso | CategoriasIngreso,
     //TODO falta el adjunto: ver cómo se guarda
 }
 

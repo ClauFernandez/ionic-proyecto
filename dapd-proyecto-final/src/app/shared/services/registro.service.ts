@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Registro } from '../models/models';
+import { CategoriasEgreso, CategoriasIngreso, Registro} from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,10 @@ import { Registro } from '../models/models';
 export class RegistroService {
 
   private _registros : Registro [] = [{
-    categoria: "2",
-    fecha: new Date(),
     ingreso: true,
-    monto: 200,
+    fecha: new Date(),
+    categoria: CategoriasIngreso.Sueldo,
+    monto: 100000,
     titulo: "registroEjDesdeServicio"
 
   }];
@@ -33,6 +33,7 @@ export class RegistroService {
     localStorage.setItem('registros', stringRegistros)
   }
 
+    //TODO: eliminar, no tengo id en interfaz
     //eliminarRegistro(registro : Registro
     //let registroNuevo : Registro[] = this._registros.filter((registroItem)=> registroItem.id !==registro.id)
 

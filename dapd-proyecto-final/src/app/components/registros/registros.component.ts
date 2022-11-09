@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/shared/services/registro.service';
-import { Registro } from 'src/shared/models/models';
+import { Registro, CategoriasEgreso} from 'src/app/shared/models/models';
 
 @Component({
   selector: 'app-registros',
@@ -11,11 +11,11 @@ export class RegistrosComponent implements OnInit {
 
   constructor(private registroService: RegistroService) { }
   registro : Registro ={
-    categoria: "3",
+    ingreso: false,
     fecha: new Date(),
-    ingreso: true,
-    monto: 400,
-    titulo: "registroEjDesdeCrear"
+    categoria: CategoriasEgreso.Regalos,
+    monto: 2000,
+    titulo: "registroDesdeBotón"
   }
 
   ngOnInit() : void {
@@ -29,13 +29,13 @@ export class RegistrosComponent implements OnInit {
   crearRegistro (){
     this.registroService.crearRegistro(this.registro);
     //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log();
+    console.log(this.registro);
   }
 
   eliminarRegistro(){
     this.registroService.eliminarRegistro();
     //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log();
+    console.log(this.registro);
   }
 
 }

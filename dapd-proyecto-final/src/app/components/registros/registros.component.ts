@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/shared/services/registro.service';
 import { Registro, CategoriasEgreso} from 'src/app/shared/models/models';
+import { DefaultTitleStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-registros',
@@ -11,12 +12,13 @@ export class RegistrosComponent implements OnInit {
 
   constructor(private registroService: RegistroService) { }
   registro : Registro ={
+    id     : new Date().getTime(),
     ingreso: false,
     fecha: new Date(),
     categoria: CategoriasEgreso.Regalos,
     monto: 2000,
     titulo: "registroDesdeBotón"
-  }
+  }//TODO: eliminar este registro!!
 
   ngOnInit() : void {
     this.registroService.registros;
@@ -34,6 +36,12 @@ export class RegistrosComponent implements OnInit {
 
   eliminarRegistro(){
     this.registroService.eliminarRegistro();
+    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
+    console.log(this.registro);
+  }
+
+  eliminarRegistroId(){
+    this.registroService.eliminarRegistroId(this.registro)
     //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
     console.log(this.registro);
   }

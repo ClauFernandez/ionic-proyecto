@@ -28,6 +28,8 @@ export class RegistrosComponent implements OnInit {
     return this.registroService.registros;
   }
 
+  //TODO: eliminar esto métodos, se usan para probar servicios.
+
   crearRegistro (){
     this.registroService.crearRegistro(this.registro);
     //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!

@@ -1,7 +1,11 @@
 <ion-list>
     <div *ngFor="let item of registros">
         <ion-item >
-          <ion-label>{{item.titulo}}</ion-label>
+            <ion-icon color="success" name="arrow-up"></ion-icon>
+          <ion-label >{{item.monto|currency}} - {{item.titulo}}</ion-label>
         </ion-item>
     </div>
+    <ion-button (click)="crearRegistro()">Crear</ion-button>
+    <ion-button color="danger" (click)="eliminarRegistro()">Eliminar</ion-button>
+
 </ion-list>

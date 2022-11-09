@@ -13,17 +13,32 @@ export class RegistroService {
     fecha: new Date(),
     ingreso: true,
     monto: 200,
-    titulo: "registroEj"
+    titulo: "registroEjDesdeServicio"
 
   }];
   
 
   crearRegistro(registro : Registro){
-    this._registros.push(registro)
+    this._registros.push(registro);
+    this.saveLocalStorage();
+    return
   }
 
   get registros (): Registro  []{
     return this._registros;
+  }
+
+  saveLocalStorage(){
+    let stringRegistros: string = JSON.stringify(this._registros);
+    localStorage.setItem('registros', stringRegistros)
+  }
+
+    //eliminarRegistro(registro : Registro
+    //let registroNuevo : Registro[] = this._registros.filter((registroItem)=> registroItem.id !==registro.id)
+
+  eliminarRegistro(){
+    this._registros.pop()
+    this.saveLocalStorage;
   }
 
   constructor() { }

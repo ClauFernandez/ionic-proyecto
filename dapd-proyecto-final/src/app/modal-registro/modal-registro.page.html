@@ -1,0 +1,68 @@
+<ion-toolbar color="primary">
+  <ion-buttons class="ion-padding" slot="end">
+    <ion-button (click)="logout()"
+      ><ion-icon name="power-outline"></ion-icon
+    ></ion-button>
+  </ion-buttons>
+  <ion-title>INGRESAR REGISTRO</ion-title>
+</ion-toolbar>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        Agregar Registro
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item fill="outline" class="ion-margin">
+        <ion-label position="floating">Detalle</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Detalle del registro"
+          [(ngModel)]="detalle"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="ion-margin">
+        <ion-label position="floating">Fecha</ion-label>
+        <ion-input
+          type="date"
+          placeholder="Ingrese una fecha"
+          [(ngModel)]="fecha"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="ion-margin">
+        <ion-label position="floating">Monto $</ion-label>
+        <ion-input
+          type="number"
+          placeholder="Ingrese el monto"
+          [(ngModel)]="monto"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="ion-margin">
+        <ion-label position="floating">Categoría</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ingrese una categoría"
+          [(ngModel)]="categoria"
+        ></ion-input>
+      </ion-item>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-end">
+          <ion-col size="5">
+            <ion-button (click)="cancel()" color="medium">Cancelar</ion-button>
+          </ion-col>
+          <ion-col size="5">
+            <ion-button (click)="confirm()" color="success">Guardar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="ion-margin"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

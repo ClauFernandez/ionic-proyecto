@@ -23,7 +23,11 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
+  },  {
+    path: 'modal-registro',
+    loadChildren: () => import('./modal-registro/modal-registro.module').then( m => m.ModalRegistroPageModule)
   }
+
 ];
 
 @NgModule({

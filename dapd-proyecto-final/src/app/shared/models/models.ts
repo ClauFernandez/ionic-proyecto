@@ -30,6 +30,7 @@ export enum CategoriasEgreso{
 }
 
 export interface Registro{
+    id          : number,
     fecha       : Date,
     ingreso     : boolean,
     titulo      : string,

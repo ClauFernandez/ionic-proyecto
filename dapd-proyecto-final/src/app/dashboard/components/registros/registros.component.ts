@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroService } from 'src/app/shared/services/registro.service';
-import { Registro, CategoriasEgreso} from 'src/app/shared/models/models';
+import { RegistroService } from 'src/app/dashboard/services/registro.service';
+import { Registro, CategoriasEgreso} from 'src/app/dashboard/models/models';
 import { DefaultTitleStrategy } from '@angular/router';
 
 @Component({

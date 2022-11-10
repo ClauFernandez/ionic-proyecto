@@ -37,6 +37,10 @@ export class RegistroService {
     monto: 8000,
     titulo: "DesdeServicio4"
   },];
+
+  constructor() { 
+    this.loadStorage();
+  }
   
 
   crearRegistro(registro : Registro){
@@ -54,6 +58,15 @@ export class RegistroService {
     localStorage.setItem('registros', stringRegistros)
   }
 
+  loadStorage(){
+    const registroStorage = localStorage.getItem('registros');
+    if(registroStorage == null){
+      return this._registros = []
+    }
+    let registros: Registro[] = JSON.parse(registroStorage);
+    this._registros = registros ;
+  }
+
 
   //TODO: ver estos 2 servicios delete
 
@@ -66,5 +79,5 @@ export class RegistroService {
     this.saveLocalStorage();
   }
 
-  constructor() { }
+  
 }

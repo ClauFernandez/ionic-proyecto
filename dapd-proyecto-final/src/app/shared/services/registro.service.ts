@@ -67,6 +67,11 @@ export class RegistroService {
     this._registros = registros ;
   }
 
+//TODO: este metodo tiene que eliminarse, solo se usa para pruebas.
+  eliminarRegistro2(){
+    this._registros.pop()
+    this.saveLocalStorage();
+  }
   
   eliminarRegistro(id: number){
     this._registros = this._registros.filter((registroItem)=> registroItem.id !==id)

@@ -36,8 +36,9 @@ export class RegistrosComponent implements OnInit {
     console.log(this.registro);
   }
 
+  //TODO: los metodos eliminar deben ser borrados de acá
   eliminarRegistro(){
-    this.registroService.eliminarRegistro();
+    this.registroService.eliminarRegistro2();
     //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
     console.log(this.registro);
   }

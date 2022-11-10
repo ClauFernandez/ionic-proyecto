@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from './auth/guards/login.guard';
 import { DashboardGuard } from './dashboard/guards/dashboard.guard';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
-  }
+  },
 ];
 
 @NgModule({

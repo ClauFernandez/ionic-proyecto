@@ -8,9 +8,10 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
+import { RegistrosComponent } from '../components/registros/registros.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, DashboardPageRoutingModule],
-  declarations: [DashboardPage, CardsComponent],
+  declarations: [DashboardPage, RegistrosComponent, CardsComponent],
 })
 export class DashboardPageModule {}

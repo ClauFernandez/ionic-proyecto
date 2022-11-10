@@ -67,8 +67,6 @@ export class RegistroService {
     this._registros = registros ;
   }
 
-
-  //TODO: ver estos 2 servicios delete
   
   eliminarRegistro(id: number){
     this._registros = this._registros.filter((registroItem)=> registroItem.id !==id)

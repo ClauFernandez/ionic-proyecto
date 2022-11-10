@@ -7,33 +7,31 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
-    canActivate: [LoginGuard]
+    loadChildren: () =>
+      import('./auth/login/login.module').then((m) => m.LoginPageModule),
+    canActivate: [LoginGuard],
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule),
-    canActivate: [DashboardGuard]
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardPageModule),
+    canActivate: [DashboardGuard],
   },
   {
     path: '**',
     redirectTo: 'login',
-    pathMatch: 'full'
-  },  {
-    path: 'modal-registro',
-    loadChildren: () => import('./modal-registro/modal-registro.module').then( m => m.ModalRegistroPageModule)
-  }
-
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

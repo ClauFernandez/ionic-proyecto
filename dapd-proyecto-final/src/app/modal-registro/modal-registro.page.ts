@@ -1,4 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -7,15 +13,30 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal-registro.page.scss'],
 })
 export class ModalRegistroPage implements OnInit {
-  constructor(private modalCtrl: ModalController) {}
+  @Input() ingreso: boolean;
 
-  ngOnInit() {}
+  agregarRegistroForm: FormGroup;
+
+  constructor(
+    private modalCtrl: ModalController,
+    private formBuilder: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    this.agregarRegistroForm = this.formBuilder.group({
+      fecha: new FormControl(new Date(), [Validators.required]),
+      detalle: new FormControl(null, [Validators.required]),
+      monto: new FormControl(null, [Validators.required, Validators.min(1)]),
+      categoria: new FormControl(null, [Validators.required]),
+    });
+  }
 
   cancel() {
     this.modalCtrl.dismiss();
   }
 
   confirm() {
+    console.log(this.agregarRegistroForm.value);
     this.modalCtrl.dismiss(); //aca hay que capturar los datos
   }
 }

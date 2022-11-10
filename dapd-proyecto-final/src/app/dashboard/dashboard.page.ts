@@ -18,9 +18,10 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {}
 
-  async openModal() {
+  async openModal(ingreso: boolean) {
     const modal = await this.modalCtrl.create({
       component: ModalRegistroPage,
+      componentProps: { ingreso },
       cssClass: 'modal-registro',
     });
     return await modal.present();

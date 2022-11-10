@@ -69,15 +69,11 @@ export class RegistroService {
 
 
   //TODO: ver estos 2 servicios delete
-
-  eliminarRegistroId(registro : Registro){
-    let registroNuevo : Registro[] = this._registros.filter((registroItem)=> registroItem.id !==registro.id)
-  }
-
-  eliminarRegistro(){
-    this._registros.pop()
-    this.saveLocalStorage();
-  }
+  
+  eliminarRegistro(id: number){
+    this._registros = this._registros.filter((registroItem)=> registroItem.id !==id)
+    this.saveLocalStorage()
+   }
 
   
 }

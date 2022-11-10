@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/dashboard/services/registro.service';
-import { Registro, CategoriasEgreso} from 'src/app/dashboard/models/models';
+import { Registro, CategoriasEgreso } from 'src/app/dashboard/models/models';
 import { DefaultTitleStrategy } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registros',
@@ -10,43 +11,44 @@ import { DefaultTitleStrategy } from '@angular/router';
 })
 export class RegistrosComponent implements OnInit {
 
-  constructor(private registroService: RegistroService) { }
-  registro : Registro ={
-    id     : new Date().getTime(),
-    ingreso: false,
-    fecha: new Date(),
-    categoria: CategoriasEgreso.Regalos,
-    monto: 2000,
-    titulo: "registroDesdeBotón"
-  }//TODO: eliminar este registro!!
+  constructor(
+    private registroService: RegistroService,
+    private actionSheetCtrl: ActionSheetController) { }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.registroService.registros;
   }
 
-  get registros(){
+  get registros() {
     return this.registroService.registros;
   }
 
-  //TODO: eliminar esto métodos, se usan para probar servicios.
-
-  crearRegistro (){
-    this.registroService.crearRegistro(this.registro);
-    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log(this.registro);
+  async abrirOpciones(id: number) {
+    const actionSheet = await this.actionSheetCtrl.create(
+      {
+        buttons: [
+          {
+            text: 'Eliminar',
+            role: 'destructive',
+            data: {
+              action: 'delete'
+            },
+            handler: ()=>console.log('eliminar', id)
+          },
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            data: {
+              action: 'cancel',
+            },
+          },
+        ]
+      });
+      actionSheet.present();
   }
-
-  //TODO: los metodos eliminar deben ser borrados de acá
-  eliminarRegistro(){
-    this.registroService.eliminarRegistro2();
-    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log(this.registro);
-  }
-
-  eliminarRegistroId(){
-    this.registroService.eliminarRegistroId(this.registro)
-    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log(this.registro);
+  
+  eliminarRegistro(id: number) {
+    this.registroService.eliminarRegistro(id);
   }
 
 }

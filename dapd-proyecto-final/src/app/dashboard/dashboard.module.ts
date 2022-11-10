@@ -8,13 +8,14 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 import { RegistrosComponent } from './components/registros/registros.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule,
+    DashboardPageRoutingModule
   ],
   declarations: [DashboardPage, RegistrosComponent]
 })

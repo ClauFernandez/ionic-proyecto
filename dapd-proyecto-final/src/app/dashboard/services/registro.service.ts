@@ -38,7 +38,8 @@ export class RegistroService {
   },];//TODO: eliminar estos registros cuando esté listo el componente agregarRegistros
 
   constructor() { 
-    //this.loadStorage();TODO: descomentar esta linea cuando esté listo el componente agregarRegistros
+    this.saveLocalStorage(); // TODO: eliminar esta linea cuando esté el componente de agregar registro
+    this.loadStorage();
   }
   
 
@@ -67,8 +68,8 @@ export class RegistroService {
   }
   
   eliminarRegistro(id: number){
-    this._registros = this._registros.filter((registroItem)=> registroItem.id !== id);
-    this.saveLocalStorage()
+    this._registros = this._registros.filter((registroItem)=> registroItem.id !==  id);
+    this.saveLocalStorage();
    }
   
 }

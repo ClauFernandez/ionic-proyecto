@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Registro } from 'src/app/shared/models/models';
-import { RegistroService } from 'src/app/shared/services/registro.service';
+import { Registro } from '../../models/models';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-cards',

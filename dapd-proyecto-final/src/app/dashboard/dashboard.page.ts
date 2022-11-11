@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/servicios/auth.service';
+import { PhotoService } from './services/photo.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +10,21 @@ import { AuthService } from '../auth/servicios/auth.service';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  public userName:string;
 
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    public photoService: PhotoService,
+    public domSanitizer: DomSanitizer,
+    public route: ActivatedRoute) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.userName = this.route.snapshot.data.userName;
+    await this.photoService.loadSaved();
   }
 
-  logout(){
-    this.authService.logout().subscribe(()=>this.router.navigate(['/login']));
+  logout() {
+    this.authService.logout().subscribe(() => this.router.navigate(['/login']));
   }
 }

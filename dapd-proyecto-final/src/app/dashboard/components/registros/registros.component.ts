@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroService } from 'src/app/shared/services/registro.service';
-import { Registro, CategoriasEgreso} from 'src/app/shared/models/models';
+import { CategoriasEgreso, Registro } from '../../models/models';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-registros',
@@ -26,16 +26,13 @@ export class RegistrosComponent implements OnInit {
   get registros(){
     return this.registroService.registros;
   }
-
  
   crearRegistro (){
     this.registroService.crearRegistro(this.registro);
-    console.log(this.registro);
   } //TODO: eliminar este registro cuando este listo el componente agregarRegistro.
 
   eliminarRegistroId(item: any){
     this.registroService.eliminarRegistro(item.id)
-    console.log(this.registro);
   }
 
 }

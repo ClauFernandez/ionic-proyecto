@@ -8,37 +8,37 @@ import { CategoriasEgreso, CategoriasIngreso, Registro} from '../models/models';
 export class RegistroService {
 
   private _registros : Registro [] = [{ //TODO: eliminar estos registros
-    id: new Date('Thu Nov 10 2022').getTime(),
+    id: 1,
     ingreso: false,
     fecha: new Date(),
     categoria: CategoriasEgreso.Alquiler,
     monto: 40000,
     titulo: "DesdeServicio1"
   },{
-    id: new Date('Thu Nov 11 2022').getTime(),
+    id: 2,
     ingreso: true,
     fecha: new Date(),
     categoria: CategoriasIngreso.IngresosExtra,
     monto: 4000,
     titulo: "DesdeServicio2"
   },{
-    id: new Date('Thu Nov 12 2022').getTime(),
+    id: 3,
     ingreso: false,
     fecha: new Date(),
     categoria: CategoriasEgreso.Supermercado,
     monto: 13000,
     titulo: "DesdeServicio3"
   },{
-    id: new Date('Thu Nov 13 2022').getTime(),
+    id: 4,
     ingreso: true,
     fecha: new Date(),
     categoria: CategoriasIngreso.Inversiones,
     monto: 8000,
     titulo: "DesdeServicio4"
-  },];
+  },];//TODO: eliminar estos registros cuando esté listo el componente agregarRegistros
 
   constructor() { 
-    this.saveLocalStorage(); // TODO: eliminar esta linea
+    this.saveLocalStorage(); // TODO: eliminar esta linea cuando esté el componente de agregar registro
     this.loadStorage();
   }
   
@@ -68,8 +68,7 @@ export class RegistroService {
   }
   
   eliminarRegistro(id: number){
-    this._registros = this._registros.filter((registroItem)=> registroItem.id !== id);
-    console.log(this.registros.map((r)=>r.id)); // TODO: Eliminar esta linea
+    this._registros = this._registros.filter((registroItem)=> registroItem.id !==  id);
     this.saveLocalStorage();
    }
   

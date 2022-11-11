@@ -1,0 +1,28 @@
+<ion-grid [fixed]="true">
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-subtitle>Balance</ion-card-subtitle>
+      <ion-card-title
+        ><h1>${{ balance }}</h1></ion-card-title
+      >
+    </ion-card-header>
+  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-card color="success">
+        <ion-card-header>
+          <ion-card-subtitle>Ingresos</ion-card-subtitle>
+          <ion-card-title>${{ ingresos }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card color="danger">
+        <ion-card-header>
+          <ion-card-subtitle>Gastos</ion-card-subtitle>
+          <ion-card-title>${{ gastos }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

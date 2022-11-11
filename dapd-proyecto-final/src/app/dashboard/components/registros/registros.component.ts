@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroService } from 'src/app/dashboard/services/registro.service';
-import { Registro, CategoriasEgreso } from 'src/app/dashboard/models/models';
-import { DefaultTitleStrategy } from '@angular/router';
-import { ActionSheetController } from '@ionic/angular';
+import { CategoriasEgreso, Registro } from '../../models/models';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-registros',
@@ -11,44 +9,30 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class RegistrosComponent implements OnInit {
 
-  constructor(
-    private registroService: RegistroService,
-    private actionSheetCtrl: ActionSheetController) { }
+  constructor(private registroService: RegistroService) { }
+  registro : Registro ={
+    id     : new Date().getTime(),
+    ingreso: false,
+    fecha: new Date(),
+    categoria: CategoriasEgreso.Regalos,
+    monto: 2000,
+    titulo: "registroDesdeBotón"
+  }//TODO: eliminar este registro cuando este listo el componente agregarRegistro.
 
-  ngOnInit(): void {
+  ngOnInit() : void {
     this.registroService.registros;
   }
 
-  get registros() {
+  get registros(){
     return this.registroService.registros;
   }
+ 
+  crearRegistro (){
+    this.registroService.crearRegistro(this.registro);
+  } //TODO: eliminar este registro cuando este listo el componente agregarRegistro.
 
-  async abrirOpciones(id: number) {
-    const actionSheet = await this.actionSheetCtrl.create(
-      {
-        buttons: [
-          {
-            text: 'Eliminar',
-            role: 'destructive',
-            data: {
-              action: 'delete'
-            },
-            handler: ()=>console.log('eliminar', id)
-          },
-          {
-            text: 'Cancelar',
-            role: 'cancel',
-            data: {
-              action: 'cancel',
-            },
-          },
-        ]
-      });
-      actionSheet.present();
-  }
-  
-  eliminarRegistro(id: number) {
-    this.registroService.eliminarRegistro(id);
+  eliminarRegistroId(item: any){
+    this.registroService.eliminarRegistro(item.id)
   }
 
 }

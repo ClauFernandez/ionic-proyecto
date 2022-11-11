@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
-import { RegistrosComponent } from '../components/registros/registros.component';
+import { RegistrosComponent } from './components/registros/registros.component';
 
 @NgModule({
   imports: [

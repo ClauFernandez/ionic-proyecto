@@ -5,41 +5,40 @@ import { CategoriasEgreso, CategoriasIngreso, Registro} from '../models/models';
   providedIn: 'root'
 })
 
-//TODO: eliminar estos registros
 export class RegistroService {
 
-  private _registros : Registro [] = [{
-    id: new Date().getTime(),
+  private _registros : Registro [] = [{ //TODO: eliminar estos registros
+    id: 1,
     ingreso: false,
     fecha: new Date(),
     categoria: CategoriasEgreso.Alquiler,
     monto: 40000,
     titulo: "DesdeServicio1"
   },{
-    id: new Date().getTime(),
+    id: 2,
     ingreso: true,
     fecha: new Date(),
     categoria: CategoriasIngreso.IngresosExtra,
     monto: 4000,
     titulo: "DesdeServicio2"
   },{
-    id: new Date().getTime(),
+    id: 3,
     ingreso: false,
     fecha: new Date(),
     categoria: CategoriasEgreso.Supermercado,
     monto: 13000,
     titulo: "DesdeServicio3"
   },{
-    id: new Date().getTime(),
+    id: 4,
     ingreso: true,
     fecha: new Date(),
     categoria: CategoriasIngreso.Inversiones,
     monto: 8000,
     titulo: "DesdeServicio4"
-  },];
+  },];//TODO: eliminar estos registros cuando esté listo el componente agregarRegistros
 
   constructor() { 
-    this.loadStorage();
+    //this.loadStorage();TODO: descomentar esta linea cuando esté listo el componente agregarRegistros
   }
   
 
@@ -66,17 +65,10 @@ export class RegistroService {
     let registros: Registro[] = JSON.parse(registroStorage);
     this._registros = registros ;
   }
-
-//TODO: este metodo tiene que eliminarse, solo se usa para pruebas.
-  eliminarRegistro2(){
-    this._registros.pop()
-    this.saveLocalStorage();
-  }
   
   eliminarRegistro(id: number){
-    this._registros = this._registros.filter((registroItem)=> registroItem.id !==id)
+    this._registros = this._registros.filter((registroItem)=> registroItem.id !== id);
     this.saveLocalStorage()
    }
-
   
 }

@@ -1,0 +1,15 @@
+<ion-list>
+    <div *ngFor="let item of registros">
+        <ion-item >
+
+            <ion-label><ion-icon *ngIf="item.ingreso ; else bloqueElse" color="success" name="arrow-up"></ion-icon>{{item.monto|currency}} <ion-icon color="danger" name="trash" (click)="eliminarRegistroId(item)"></ion-icon><br>&nbsp;&nbsp;&nbsp;{{item.titulo}} - {{item.fecha| date: 'dd/MM/YYYY'}} - {{item.categoria}}</ion-label>
+            <ng-template #bloqueElse><ion-icon color="danger" name="arrow-down"></ion-icon>-</ng-template>
+          
+        </ion-item>
+    </div>
+
+    <!-- TODO: Eliminar este botones, se usan para probar servicios, los pueden usar de ejemplo para crearlos en otros componentes -->
+    <!-- <ion-button color="success"(click)="crearRegistro()">Crear</ion-button> -->
+    
+
+</ion-list>

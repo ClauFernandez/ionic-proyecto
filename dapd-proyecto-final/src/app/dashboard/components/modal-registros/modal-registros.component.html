@@ -12,46 +12,27 @@
     <form [formGroup]="agregarRegistroForm">
       <ion-card-content>
         <!--Input ID-->
-        <ion-input
-          type="hidden"
-          placeholder="Detalle del registro"
-          formControlName="id"
-        ></ion-input>
+        <ion-input type="hidden" placeholder="Detalle del registro" formControlName="id"></ion-input>
 
         <!--Input tipo de registro: Boolean donde true es ingreso-->
-        <ion-input
-          type="hidden"
-          placeholder="Detalle del registro"
-          formControlName="ingreso"
-        ></ion-input>
+        <ion-input type="hidden" placeholder="Detalle del registro" formControlName="ingreso"></ion-input>
 
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Detalle</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Detalle del registro"
-            formControlName="titulo"
-          ></ion-input>
+          <ion-input type="text" placeholder="Detalle del registro" formControlName="titulo"></ion-input>
         </ion-item>
 
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Fecha</ion-label>
-          <ion-input
-            type="date"
-            placeholder="Ingrese una fecha"
-            formControlName="fecha"
-          ></ion-input>
+          <ion-input type="date" placeholder="Ingrese una fecha" formControlName="fecha"></ion-input>
         </ion-item>
 
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Monto $</ion-label>
-          <ion-input
-            type="number"
-            placeholder="Ingrese el monto"
-            formControlName="monto"
-          ></ion-input>
+          <ion-input type="number" placeholder="Ingrese el monto" formControlName="monto"></ion-input>
         </ion-item>
 
+        <!-- TODO: Completar los datos de esta lista con los enum del model.ts-->
         <ion-list>
           <ion-item fill="outline" class="ion-margin-start ion-margin-end">
             <ion-label position="floating">Categoría</ion-label>
@@ -63,31 +44,16 @@
           </ion-item>
         </ion-list>
 
+        <!-- TODO: Eliminar este input-->
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Categoría</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Ingrese una categoría"
-            formControlName="categoria"
-          ></ion-input>
+          <ion-input type="text" placeholder="Ingrese una categoría" formControlName="categoria"></ion-input>
         </ion-item>
 
-        <ion-button
-          [disabled]="agregarRegistroForm.invalid"
-          expand="block"
-          (click)="confirm()"
-          class="ion-margin"
-          color="primary"
-          >Guardar</ion-button
-        >
+        <ion-button [disabled]="agregarRegistroForm.invalid" expand="block" (click)="confirm()" class="ion-margin"
+          color="primary">Guardar</ion-button>
 
-        <ion-button
-          expand="block"
-          (click)="cancel()"
-          class="ion-margin"
-          color="medium"
-          >Cancelar</ion-button
-        >
+        <ion-button expand="block" (click)="cancel()" class="ion-margin" color="medium">Cancelar</ion-button>
       </ion-card-content>
     </form>
   </ion-card>

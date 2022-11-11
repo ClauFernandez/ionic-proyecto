@@ -17,12 +17,12 @@ export class ModalRegistrosComponent implements OnInit {
   @Input() ingreso: boolean;
 
   agregarRegistroForm: FormGroup;
-  registroService: RegistroService;
 
   constructor(
     private modalCtrl: ModalController,
-    private formBuilder: FormBuilder
-  ) {}
+    private formBuilder: FormBuilder,
+    private registroService: RegistroService
+  ) { }
 
   ngOnInit() {
     this.agregarRegistroForm = this.formBuilder.group({
@@ -40,9 +40,9 @@ export class ModalRegistrosComponent implements OnInit {
   }
 
   confirm() {
+    //TODO: Eliminar el console.log
     console.log(this.agregarRegistroForm.value);
-    //aca hay que capturar los datos
-    //this.registroService.crearRegistro();
+    this.registroService.crearRegistro(this.agregarRegistroForm.value);
     this.modalCtrl.dismiss();
   }
 }

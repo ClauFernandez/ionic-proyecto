@@ -1,56 +1,27 @@
-<!-- MENU -->
-<!-- <ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu Content</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-menu-toggle>
-      <ion-button>Click to close the menu</ion-button>
-    </ion-menu-toggle>
-  </ion-content>
-</ion-menu> -->
-<!-- TOOLBAR -->
-<!-- <ion-toolbar color="primary">
-  <ion-menu-toggle slot="start">
-    <ion-icon name="image-sharp"></ion-icon>
-  </ion-menu-toggle> -->
-<!-- <ion-buttons slot="end">
-    <ion-button (click)="logout()">Logout</ion-button>
-  </ion-buttons> -->
-<!-- <ion-title>MIS GASTOS APP</ion-title>
-</ion-toolbar> -->
-<!-- CONTENT -->
-<!-- <ion-content> -->
-<!-- TODO: -->
-<!-- ACÁ IRÍAN LOS COMPONENTES DE LAS CARDS, EL DE LA LISTA, Y EL BOTON PARA AGREGAR-->
-<!-- <app-registros></app-registros>  
-</ion-content>
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-menu-toggle>
-      <ion-button>Click to open the menu</ion-button>
-    </ion-menu-toggle>
-  </ion-content>
-</div> -->
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
-        <ion-thumbnail slot="start" class="ion-margin-start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </ion-thumbnail>
+      <ion-thumbnail slot="start" class="ion-margin-start">
+        <img alt="user" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-thumbnail>
       <ion-title>Usuario</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-button expand="full" color="light">Cambiar foto de perfil</ion-button>
-    <ion-button expand="full" color="primary" (click)="logout()">Logout<ion-icon slot="end" name="power-sharp"></ion-icon></ion-button>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item button lines="full">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          <ion-label>Cambiar foto de perfil</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item button lines="full" (click)="logout()">
+          <ion-icon name="power-sharp" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
   </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
@@ -60,7 +31,7 @@
         <ion-menu-toggle>
           <ion-button>
             <ion-thumbnail>
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              <img alt="user" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
             </ion-thumbnail>
           </ion-button>
         </ion-menu-toggle>

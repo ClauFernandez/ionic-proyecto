@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/shared/services/registro.service';
-import { Registro, CategoriasEgreso } from 'src/app/shared/models/models';
-import { DefaultTitleStrategy } from '@angular/router';
+import { Registro, CategoriasEgreso} from 'src/app/shared/models/models';
 
 @Component({
   selector: 'app-registros',
@@ -9,42 +8,34 @@ import { DefaultTitleStrategy } from '@angular/router';
   styleUrls: ['./registros.component.scss'],
 })
 export class RegistrosComponent implements OnInit {
-  constructor(private registroService: RegistroService) {}
-  registro: Registro = {
-    id: new Date().getTime(),
+
+  constructor(private registroService: RegistroService) { }
+  registro : Registro ={
+    id     : new Date().getTime(),
     ingreso: false,
     fecha: new Date(),
     categoria: CategoriasEgreso.Regalos,
     monto: 2000,
-    titulo: 'registroDesdeBotón',
-  }; //TODO: eliminar este registro!!
+    titulo: "registroDesdeBotón"
+  }//TODO: eliminar este registro cuando este listo el componente agregarRegistro.
 
-  ngOnInit(): void {
+  ngOnInit() : void {
     this.registroService.registros;
   }
 
-  get registros() {
+  get registros(){
     return this.registroService.registros;
   }
 
-  //TODO: eliminar esto métodos, se usan para probar servicios.
-
-  crearRegistro() {
+ 
+  crearRegistro (){
     this.registroService.crearRegistro(this.registro);
-    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
+    console.log(this.registro);
+  } //TODO: eliminar este registro cuando este listo el componente agregarRegistro.
+
+  eliminarRegistroId(item: any){
+    this.registroService.eliminarRegistro(item.id)
     console.log(this.registro);
   }
 
-  //TODO: los metodos eliminar deben ser borrados de acá
-  eliminarRegistro() {
-    this.registroService.eliminarRegistro2();
-    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log(this.registro);
-  }
-
-  /*eliminarRegistroId(){
-    this.registroService.eliminarRegistroId(this.registro)
-    //TODO: BORRAR CONSOLE.LOG!!!!!!!!!!!!!
-    console.log(this.registro);
-  }*/
 }

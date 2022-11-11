@@ -1,0 +1,10 @@
+ion-thumbnail {
+    --size: 30px;
+    --border-radius: 15px;
+}
+ion-menu{
+    ion-button{
+        --border-style: none;
+        --border-radius: 0;
+    }
+}

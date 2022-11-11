@@ -6,16 +6,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { RegistroService } from 'src/app/shared/services/registro.service';
 
 @Component({
-  selector: 'app-modal-registro',
-  templateUrl: './modal-registro.page.html',
-  styleUrls: ['./modal-registro.page.scss'],
+  selector: 'app-modal-registros',
+  templateUrl: './modal-registros.component.html',
+  styleUrls: ['./modal-registros.component.scss'],
 })
-export class ModalRegistroPage implements OnInit {
+export class ModalRegistrosComponent implements OnInit {
   @Input() ingreso: boolean;
 
   agregarRegistroForm: FormGroup;
+  registroService: RegistroService;
 
   constructor(
     private modalCtrl: ModalController,
@@ -24,10 +26,12 @@ export class ModalRegistroPage implements OnInit {
 
   ngOnInit() {
     this.agregarRegistroForm = this.formBuilder.group({
+      id: new FormControl(new Date().getTime()),
       fecha: new FormControl(new Date(), [Validators.required]),
-      detalle: new FormControl(null, [Validators.required]),
+      titulo: new FormControl(null, [Validators.required]),
       monto: new FormControl(null, [Validators.required, Validators.min(1)]),
       categoria: new FormControl(null, [Validators.required]),
+      ingreso: new FormControl(this.ingreso),
     });
   }
 
@@ -37,6 +41,8 @@ export class ModalRegistroPage implements OnInit {
 
   confirm() {
     console.log(this.agregarRegistroForm.value);
-    this.modalCtrl.dismiss(); //aca hay que capturar los datos
+    //aca hay que capturar los datos
+    //this.registroService.crearRegistro();
+    this.modalCtrl.dismiss();
   }
 }

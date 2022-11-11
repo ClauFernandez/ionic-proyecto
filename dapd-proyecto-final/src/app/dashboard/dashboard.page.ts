@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from '../auth/servicios/auth.service';
-import { ModalRegistroPage } from '../modal-registro/modal-registro.page';
+import { ModalRegistrosComponent } from './components/modal-registros/modal-registros.component';
+//import { ModalRegistroPage } from '../modal-registro/modal-registro.page';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardPage implements OnInit {
 
   async openModal(ingreso: boolean) {
     const modal = await this.modalCtrl.create({
-      component: ModalRegistroPage,
+      component: ModalRegistrosComponent,
       componentProps: { ingreso },
       cssClass: 'modal-registro',
     });

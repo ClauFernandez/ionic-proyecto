@@ -5,18 +5,32 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title class="ion-text-center">
-        Agregar {{ ingreso ? "Ingreso" : "Egreso" }}
+        <h1>Agregar {{ ingreso ? "Ingreso" : "Egreso" }}</h1>
       </ion-card-title>
     </ion-card-header>
 
     <form [formGroup]="agregarRegistroForm">
       <ion-card-content>
+        <!--Input ID-->
+        <ion-input
+          type="hidden"
+          placeholder="Detalle del registro"
+          formControlName="id"
+        ></ion-input>
+
+        <!--Input tipo de registro: Boolean donde true es ingreso-->
+        <ion-input
+          type="hidden"
+          placeholder="Detalle del registro"
+          formControlName="ingreso"
+        ></ion-input>
+
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Detalle</ion-label>
           <ion-input
             type="text"
             placeholder="Detalle del registro"
-            formControlName="detalle"
+            formControlName="titulo"
           ></ion-input>
         </ion-item>
 
@@ -38,6 +52,18 @@
           ></ion-input>
         </ion-item>
 
+        <ion-list>
+          <ion-item fill="outline" class="ion-margin-start ion-margin-end">
+            <ion-label position="floating">Categoría</ion-label>
+            <ion-select placeholder="Seleccione una categoría">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="oranges">Oranges</ion-select-option>
+              <ion-select-option value="bananas">Bananas</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+        <!--
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Categoría</ion-label>
           <ion-input
@@ -46,8 +72,10 @@
             formControlName="categoria"
           ></ion-input>
         </ion-item>
+        -->
 
         <ion-button
+          [disabled]="agregarRegistroForm.invalid"
           expand="block"
           (click)="confirm()"
           class="ion-margin"

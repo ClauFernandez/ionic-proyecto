@@ -12,6 +12,6 @@ import { RegistrosComponent } from './components/registros/registros.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, DashboardPageRoutingModule],
-  declarations: [DashboardPage, CardsComponent, RegistrosComponent],
+  declarations: [DashboardPage, RegistrosComponent, CardsComponent],
 })
 export class DashboardPageModule {}

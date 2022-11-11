@@ -6,6 +6,7 @@ import { Http } from '@capacitor-community/http';
 import { HttpOptions } from '@capacitor/core';
 import { tap } from 'rxjs/operators';
 import { StorageService } from './storage.service';
+import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,7 @@ export class AuthService {
 
   private http = Http;
 
-  constructor(private storageService: StorageService) {
+  constructor(private storageService: StorageService,private loadingCtrl: LoadingController) {
   }
 
   login(user: Usuario) {
@@ -26,12 +27,18 @@ export class AuthService {
       data: { user }
     };
     return from(this.http.request(options))
-      .pipe(tap(async ({ status }) => await this.storageService.set('loggedIn', status === 200)));
+      .pipe(tap(async ({ status, data:{userName} }) => {
+        await this.storageService.set('loggedIn', status === 200);
+        if(status===200) await this.storageService.set('userName', userName);
+      }));
   }
 
   logout() {
     const endpoint = `${environment.api}/logout`;
     return from(this.http.post({ url: endpoint }))
-      .pipe(tap(async ({status}) => await this.storageService.set('loggedIn', status !== 200)));
+      .pipe(tap(async ({status}) =>{
+        await this.storageService.set('loggedIn', status !== 200);
+        if(status===200) await this.storageService.remove('userName');
+      }));
   }
 }

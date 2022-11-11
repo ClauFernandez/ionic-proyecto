@@ -1,16 +1,27 @@
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-thumbnail slot="start" class="ion-margin-start">
-        <img alt="user" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <ion-thumbnail slot="start" class="ion-margin-start" id="open-modal">
+        <img alt="user" [src]="domSanitizer.bypassSecurityTrustUrl(photoService.photo.webviewPath)" />
       </ion-thumbnail>
-      <ion-title>Usuario</ion-title>
+      <ion-title>{{userName}}</ion-title>
+      <ion-modal id="userModal"  #userModal trigger="open-modal">
+        <ng-template>
+          <ion-toolbar>
+            <ion-buttons slot="end">
+              <ion-button (click)="userModal.dismiss()"><ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
+            </ion-buttons>
+            <ion-title>Foto de perfil</ion-title>
+          </ion-toolbar>
+          <img alt="user" [src]="domSanitizer.bypassSecurityTrustUrl(photoService.photo.webviewPath)" />
+        </ng-template>
+      </ion-modal>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
       <ion-menu-toggle>
-        <ion-item button lines="full">
+        <ion-item button lines="full" (click)="photoService.addNewToGallery()">
           <ion-icon name="camera-outline" slot="start"></ion-icon>
           <ion-label>Cambiar foto de perfil</ion-label>
         </ion-item>
@@ -31,7 +42,7 @@
         <ion-menu-toggle>
           <ion-button>
             <ion-thumbnail>
-              <img alt="user" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              <img alt="user" [src]="domSanitizer.bypassSecurityTrustUrl(this.photoService.photo.webviewPath)" />
             </ion-thumbnail>
           </ion-button>
         </ion-menu-toggle>

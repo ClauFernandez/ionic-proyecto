@@ -1,8 +1,9 @@
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.listen(port, ()=>{
@@ -27,7 +28,7 @@ app.post('/api/login', (req, res)=>{
         let isUserValid = users.users.find(u=> u.userName == user.userName && u.password == user.password);
 
         if(isUserValid)
-            res.status(200).send({mesagge: "Login has been successfully."})
+            res.status(200).send({userName: user.userName, mesagge: "Login has been successfully."})
         else
             res.status(401).send({mesagge: "The user is not valid. Please try again."})
 

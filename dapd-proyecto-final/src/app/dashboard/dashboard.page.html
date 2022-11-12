@@ -1,13 +1,57 @@
-<ion-toolbar color="primary">
-  <ion-buttons class="ion-padding" slot="end">
-    <ion-button (click)="logout()">
-      <ion-icon name="power-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-  <ion-title>MIS GASTOS APP</ion-title>
-</ion-toolbar>
-<ion-content>
-  <!-- TODO: -->
-  <app-registros></app-registros>
-  <!-- ACÁ IRÍAN LOS COMPONENTES DE LAS CARDS, EL DE LA LISTA, Y EL BOTON PARA AGREGAR-->
-</ion-content>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-thumbnail slot="start" class="ion-margin-start" id="open-modal">
+        <img alt="user" [src]="domSanitizer.bypassSecurityTrustUrl(photoService.photo.webviewPath)" />
+      </ion-thumbnail>
+      <ion-title>{{userName}}</ion-title>
+      <ion-modal id="userModal"  #userModal trigger="open-modal">
+        <ng-template>
+          <ion-toolbar>
+            <ion-buttons slot="end">
+              <ion-button (click)="userModal.dismiss()"><ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
+            </ion-buttons>
+            <ion-title>Foto de perfil</ion-title>
+          </ion-toolbar>
+          <img alt="user" [src]="domSanitizer.bypassSecurityTrustUrl(photoService.photo.webviewPath)" />
+        </ng-template>
+      </ion-modal>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item button lines="full" (click)="photoService.addNewToGallery()">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          <ion-label>Cambiar foto de perfil</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item button lines="full" (click)="logout()">
+          <ion-icon name="power-sharp" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-thumbnail>
+              <img alt="user" [src]="domSanitizer.bypassSecurityTrustUrl(this.photoService.photo.webviewPath)" />
+            </ion-thumbnail>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <ion-title>MIS GASTOS APP</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <app-cards></app-cards>
+    <app-registros></app-registros>
+  </ion-content>
+</div>

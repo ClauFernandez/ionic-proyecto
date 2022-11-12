@@ -20,6 +20,10 @@ export class StorageService implements OnDestroy {
     return from(this.storage.get(key));
   }
 
+  public remove(key: string){
+    this.storage.remove(key);
+  }
+
   ngOnDestroy(): void {
     this.storage.clear();
   }

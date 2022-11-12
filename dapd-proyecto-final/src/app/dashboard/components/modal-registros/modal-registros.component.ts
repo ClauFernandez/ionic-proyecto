@@ -1,16 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { ModalController } from '@ionic/angular';
-import {
-  CategoriasEgreso,
-  CategoriasIngreso,
-} from 'src/app/shared/models/models';
-import { RegistroService } from 'src/app/shared/services/registro.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { ModalController } from "@ionic/angular";
+import { CategoriasEgreso, CategoriasIngreso } from "../../models/models";
+import { RegistroService } from "../../services/registro.service";
 
 @Component({
   selector: 'app-modal-registros',
@@ -26,7 +18,7 @@ export class ModalRegistrosComponent implements OnInit {
     private modalCtrl: ModalController,
     private formBuilder: FormBuilder,
     private registroService: RegistroService
-  ) {}
+  ) { }
 
   keys = Object.keys;
   categoria;
@@ -53,7 +45,6 @@ export class ModalRegistrosComponent implements OnInit {
   }
 
   confirm() {
-    console.log(this.agregarRegistroForm.value);
     this.registroService.crearRegistro(this.agregarRegistroForm.value);
     this.modalCtrl.dismiss();
   }

@@ -1,28 +1,18 @@
-export interface Usuario{
-    userName    :string,
-    password    :string
-}
-
-// export enum TipoRegistro{
-//     Ingreso,
-//     Egreso
-// } //TODO: Ver si es necesario este enum
-
 export enum CategoriasIngreso{
     Sueldo              ='Sueldo',
     Inversiones         ='Inversiones',
-    IngresosExtra       ='IngresosExtra',
+    IngresosExtra       ='Ingresos extra',
 }
 
 export enum CategoriasEgreso{
-    ExtraccionEfectivo  = 'ExtraccionEfectivo',
+    ExtraccionEfectivo  = 'Extracción efectivo',
     Regalos             = 'Regalos',
     Tarjetas            = 'Tarjetas',
     Servicios           = 'Servicios',
     Indumentaria        = 'Indumentaria',
     Supermercado        = 'Supermercado',
     Alquiler            = 'Alquiler',
-    Educacion           = 'Educacion',
+    Educacion           = 'Educación',
     Impuestos           = 'Impuestos',
     Salidas             = 'Salidas',
     Ahorro              = 'Ahorro',
@@ -35,8 +25,7 @@ export interface Registro{
     ingreso     : boolean,
     titulo      : string,
     monto       : number,
-    categoria   : CategoriasEgreso | CategoriasIngreso,
-    //TODO falta el adjunto: ver cómo se guarda
+    categoria   : CategoriasEgreso | CategoriasIngreso
 }
 
 export interface Balance{

@@ -43,6 +43,7 @@ Request para "loguearse" en la app
 
 ``` json
 {
+    userName: "string"
     "mesagge": "Login has been successfully."
 }
 ```

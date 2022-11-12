@@ -9,12 +9,13 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
-    canActivate: [LoginGuard]
+    loadChildren: () =>
+      import('./auth/login/login.module').then((m) => m.LoginPageModule),
+    canActivate: [LoginGuard],
   },
   {
     path: 'dashboard',
@@ -25,7 +26,7 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];
 

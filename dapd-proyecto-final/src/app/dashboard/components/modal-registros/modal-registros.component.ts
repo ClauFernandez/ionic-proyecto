@@ -6,6 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import {
+  CategoriasEgreso,
+  CategoriasIngreso,
+} from 'src/app/shared/models/models';
 import { RegistroService } from 'src/app/shared/services/registro.service';
 
 @Component({
@@ -22,9 +26,18 @@ export class ModalRegistrosComponent implements OnInit {
     private modalCtrl: ModalController,
     private formBuilder: FormBuilder,
     private registroService: RegistroService
-  ) { }
+  ) {}
+
+  keys = Object.keys;
+  categoria;
 
   ngOnInit() {
+    if (this.ingreso) {
+      this.categoria = CategoriasIngreso;
+    } else {
+      this.categoria = CategoriasEgreso;
+    }
+
     this.agregarRegistroForm = this.formBuilder.group({
       id: new FormControl(new Date().getTime()),
       fecha: new FormControl(new Date(), [Validators.required]),
@@ -40,7 +53,6 @@ export class ModalRegistrosComponent implements OnInit {
   }
 
   confirm() {
-    //TODO: Eliminar el console.log
     console.log(this.agregarRegistroForm.value);
     this.registroService.crearRegistro(this.agregarRegistroForm.value);
     this.modalCtrl.dismiss();

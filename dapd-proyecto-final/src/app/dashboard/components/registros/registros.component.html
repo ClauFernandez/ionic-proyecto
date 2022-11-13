@@ -9,7 +9,7 @@
         </ion-label>
         <ng-template #bloqueElse><ion-icon color="danger" name="arrow-down"></ion-icon></ng-template>
       </ion-item>
-      <div (click)="abrirActionSheet()" class="ion-padding" slot="content"><strong>{{item.titulo}}</strong> - {{item.fecha | date: 'dd/MM/YYYY'}}
+      <div (click)="abrirActionSheet(item)" class="ion-padding" slot="content"><strong>{{item.titulo}}</strong> - {{item.fecha | date: 'dd/MM/YYYY'}}
       <br><br><ion-badge>{{item.categoria}}</ion-badge></div>
     </ion-accordion>
 </ion-accordion-group>
@@ -20,5 +20,5 @@
 </div>
 
 <!-- TOOD: eliminar estos botones cuando este listo el componente agregarRegistros -->
-<!-- <button (click)="abrirModal(true)">Ingreso</button> -->
+<button (click)="abrirModal(true)">Ingreso</button>
 <!-- <button (click)="abrirModal(false)">Egreso</button> -->

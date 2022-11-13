@@ -44,7 +44,6 @@ export class RegistrosComponent implements OnInit {
               action: 'delete'
             },
             handler: ()=>{
-              console.log(item, 'console handler')
               this.eliminarRegistroId(item)
             },
           },
@@ -70,13 +69,13 @@ export class RegistrosComponent implements OnInit {
   }
  }
   
-  //  async abrirModal(ingreso : boolean) {
-  //   const modal = await this.modalControl.create({
-  //     component: ModalRegistrosComponent,
-  //     componentProps: {ingreso},
-  //   });
-  //   return await modal.present();
-  // }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro
+   async abrirModal(ingreso : boolean) {
+    const modal = await this.modalControl.create({
+      component: ModalRegistrosComponent,
+      componentProps: {ingreso},
+    });
+    return await modal.present();
+  }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro
 
 
   

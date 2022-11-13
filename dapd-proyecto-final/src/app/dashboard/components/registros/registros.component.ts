@@ -69,10 +69,10 @@ export class RegistrosComponent implements OnInit {
   }
  }
   
-   async abrirModal(item : boolean) {
+   async abrirModal(ingreso : boolean) {
     const modal = await this.modalControl.create({
       component: ModalRegistrosComponent,
-      componentProps: {item},
+      componentProps: {ingreso},
     });
     return await modal.present();
   }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro

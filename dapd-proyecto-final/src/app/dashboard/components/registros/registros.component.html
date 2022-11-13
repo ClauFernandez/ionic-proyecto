@@ -10,7 +10,8 @@
         <ng-template #bloqueElse><ion-icon color="danger" name="arrow-down"></ion-icon></ng-template>
       </ion-item>
       <div (click)="abrirActionSheet()" class="ion-padding" slot="content"><strong>{{item.titulo}}</strong> - {{item.fecha | date: 'dd/MM/YYYY'}}
-      <br><br><ion-badge>{{item.categoria}}</ion-badge>  <button (click)="eliminarRegistroId(item)">borrar</button></div>
+      <br><br><ion-badge>{{item.categoria}}</ion-badge></div>
+        <!-- <button (click)="eliminarRegistroId(item)">borrar</button></div> -->
     </ion-accordion>
 </ion-accordion-group>
 

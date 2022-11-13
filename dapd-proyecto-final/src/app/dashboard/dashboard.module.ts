@@ -13,6 +13,7 @@ import { ModalRegistrosComponent } from './components/modal-registros/modal-regi
 import { AgregarRegistrosComponent } from './components/agregar-registros/agregar-registros.component';
 
 @NgModule({
+  entryComponents:[ModalRegistrosComponent],
   imports: [CommonModule, FormsModule, IonicModule, DashboardPageRoutingModule, ReactiveFormsModule],
   declarations: [DashboardPage, RegistrosComponent, CardsComponent, ModalRegistrosComponent,AgregarRegistrosComponent],
 })

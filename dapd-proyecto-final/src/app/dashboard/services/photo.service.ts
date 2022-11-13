@@ -14,7 +14,7 @@ export class PhotoService {
   public photo: UserPhoto =  { filepath: 'user.svg', webviewPath: 'assets/user.svg'};
   private PHOTO_STORAGE: string = 'photos';
 
-  constructor(private platform: Platform) {    
+  constructor(private platform: Platform) {
   }
 
   public async loadSaved() {
@@ -50,9 +50,9 @@ export class PhotoService {
   public async addNewToGallery() {
     await Preferences.clear();
     // Take a photo
-    let capturedPhoto =  await Camera.getPhoto({
+      let capturedPhoto =  await Camera.getPhoto({
       resultType: CameraResultType.Uri, // file-based data; provides best performance
-      source: CameraSource.Camera, // automatically take a new photo with the camera
+      source: CameraSource.Prompt, // automatically take a new photo with the camera
       quality: 100, // highest quality (0 to 100)
     });
 

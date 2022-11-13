@@ -6,7 +6,6 @@ import { Http } from '@capacitor-community/http';
 import { HttpOptions } from '@capacitor/core';
 import { tap } from 'rxjs/operators';
 import { StorageService } from './storage.service';
-import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +13,7 @@ export class AuthService {
 
   private http = Http;
 
-  constructor(private storageService: StorageService,private loadingCtrl: LoadingController) {
+  constructor(private storageService: StorageService) {
   }
 
   login(user: Usuario) {

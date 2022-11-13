@@ -12,20 +12,8 @@ import { ModalRegistrosComponent } from '../modal-registros/modal-registros.comp
 })
 export class RegistrosComponent implements OnInit {
 
-  constructor(private registroService: RegistroService, public actionSheetController: ActionSheetController, private alertController: AlertController, private modalCtrl : ModalController) { }
-  registro : Registro = {
-    id: 123,
-    categoria: null,
-    fecha: null,
-    ingreso: null,
-    monto: 0,
-    titulo: '',
-  }
-  handlerMessage = '';
-  roleMessage = '';
-
-  
-  // registro : Registro[] = [];
+  constructor(private registroService: RegistroService, public actionSheetController: ActionSheetController, private modalControl : ModalController) { }
+  registro : Registro[] = []
 
   //valida si no hay registros
   noHayRegistros : boolean = false;
@@ -33,7 +21,6 @@ export class RegistrosComponent implements OnInit {
   ngOnInit() : void {
     this.registroService.registros
     this.checkRegistros();
-    console.log(this.registros)
   }
 
   ngDoCheck(){
@@ -56,8 +43,9 @@ export class RegistrosComponent implements OnInit {
               action: 'delete'
             },
             handler: ()=>{
-              console.log("eliminar desde actionSheet")
-            }
+              console.log("eliminar desde actionSheet");
+              this.eliminarRegistroId(123);
+            },
           },
           {
             text: 'Cancelar',
@@ -80,51 +68,18 @@ export class RegistrosComponent implements OnInit {
     this.noHayRegistros =false;
   }
  }
-
-  // crearRegistro (){
-  //   this.registroService.crearRegistro(this.registro);
-  // } //TODO: eliminar este registro cuando este listo el componente agregarRegistro.
   
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Alert!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            this.eliminarRegistroId(123)
-          },
-        },
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: () => {
-            this.handlerMessage = 'Alert confirmed';
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    this.roleMessage = `Dismissed with role: ${role}`;
-  }
-
-   async abrirModal(ingreso: boolean) {
-    const modal = await this.modalCtrl.create({
+   async abrirModal(item : boolean) {
+    const modal = await this.modalControl.create({
       component: ModalRegistrosComponent,
-      componentProps: { ingreso  },
-      cssClass: 'modal-registro',
+      componentProps: {item},
     });
     return await modal.present();
-  }
+  }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro
 
 
   
   eliminarRegistroId(item: any){
-    if(confirm)
     this.registroService.eliminarRegistro(item.id)
   }
 }

@@ -34,6 +34,7 @@ export class DashboardPage implements OnInit {
       cssClass: 'modal-registro',
     });
     return await modal.present();
+
   }
 
   logout()  {

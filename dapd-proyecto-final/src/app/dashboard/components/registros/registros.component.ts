@@ -20,7 +20,8 @@ export class RegistrosComponent implements OnInit {
 
   ngOnInit() : void {
     this.registroService.registros
-    this.checkRegistros();
+    
+    console.log(this.registroService.registros)//TODO: eliminar esta linea
   }
 
   ngDoCheck(){
@@ -31,7 +32,7 @@ export class RegistrosComponent implements OnInit {
     return this.registroService.registros;
   }
 
-  async abrirActionSheet(){
+  async abrirActionSheet(item: any){
     const actionSheet = await this.actionSheetController.create(
       {
         buttons: [
@@ -43,8 +44,8 @@ export class RegistrosComponent implements OnInit {
               action: 'delete'
             },
             handler: ()=>{
-              console.log("eliminar desde actionSheet");
-              this.eliminarRegistroId(123);
+              console.log(item, 'console handler')
+              this.eliminarRegistroId(item)
             },
           },
           {
@@ -69,13 +70,13 @@ export class RegistrosComponent implements OnInit {
   }
  }
   
-   async abrirModal(ingreso : boolean) {
-    const modal = await this.modalControl.create({
-      component: ModalRegistrosComponent,
-      componentProps: {ingreso},
-    });
-    return await modal.present();
-  }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro
+  //  async abrirModal(ingreso : boolean) {
+  //   const modal = await this.modalControl.create({
+  //     component: ModalRegistrosComponent,
+  //     componentProps: {ingreso},
+  //   });
+  //   return await modal.present();
+  // }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro
 
 
   

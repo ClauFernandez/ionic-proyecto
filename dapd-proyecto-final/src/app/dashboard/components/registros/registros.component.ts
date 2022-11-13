@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController, ModalController } from '@ionic/angular';
+import { ActionSheetController} from '@ionic/angular';
 import { Registro } from '../../models/models';
 import { RegistroService } from '../../services/registro.service';
 import { AlertController } from '@ionic/angular';
-import { ModalRegistrosComponent } from '../modal-registros/modal-registros.component';
+
 
 @Component({
   selector: 'app-registros',
@@ -12,7 +12,7 @@ import { ModalRegistrosComponent } from '../modal-registros/modal-registros.comp
 })
 export class RegistrosComponent implements OnInit {
 
-  constructor(private registroService: RegistroService, public actionSheetController: ActionSheetController, private modalControl : ModalController) { }
+  constructor(private registroService: RegistroService, public actionSheetController: ActionSheetController) { }
   registro : Registro[] = []
 
   //valida si no hay registros
@@ -68,17 +68,7 @@ export class RegistrosComponent implements OnInit {
     this.noHayRegistros =false;
   }
  }
-  
-   async abrirModal(ingreso : boolean) {
-    const modal = await this.modalControl.create({
-      component: ModalRegistrosComponent,
-      componentProps: {ingreso},
-    });
-    return await modal.present();
-  }//TODO: eliminar este metodo cuando este listo el componente agregarRegistro
-
-
-  
+    
   eliminarRegistroId(item: any){
     this.registroService.eliminarRegistro(item.id)
   }

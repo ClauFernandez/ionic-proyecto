@@ -52,7 +52,19 @@
   </ion-header>
   <ion-content class="ion-padding">
     <app-cards></app-cards>
-    <app-registros></app-registros>
-    <app-agregar-registros></app-agregar-registros>
+    <app-registros class="ion-margin"></app-registros>
+    <ion-fab class="ion-margin" slot="fixed" horizontal="end" vertical="bottom">
+      <ion-fab-button color="primary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="openModal(false)" color="danger">
+          <ion-icon name="arrow-down-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openModal(true)" color="success">
+          <ion-icon name="arrow-up-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>    
   </ion-content>
 </div>

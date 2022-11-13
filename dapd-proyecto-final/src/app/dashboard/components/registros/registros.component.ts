@@ -21,7 +21,7 @@ export class RegistrosComponent implements OnInit {
   ngOnInit() : void {
     this.registroService.registros
     
-    console.log(this.registroService.registros)//TODO: eliminar esta linea
+    // console.log(this.registroService.registros)//TODO: eliminar esta linea
   }
 
   ngDoCheck(){

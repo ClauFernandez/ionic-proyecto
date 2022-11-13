@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from '../auth/servicios/auth.service';
+import { ModalRegistrosComponent } from './components/modal-registros/modal-registros.component';
 import { PhotoService } from './services/photo.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class DashboardPage implements OnInit {
     private router: Router,
     public photoService: PhotoService,
     public domSanitizer: DomSanitizer,
-    public route: ActivatedRoute) {}
+    public route: ActivatedRoute,
+    private modalCtrl: ModalController) {}
 
   async ngOnInit() {
     this.userName = this.route.snapshot.data.userName;
@@ -27,5 +29,14 @@ export class DashboardPage implements OnInit {
 
   logout()  {
     this.authService.logout().subscribe(()  =>  this.router.navigate(['/login']));
+  }
+
+  async openModal(ingreso: boolean) {
+    const modal = await this.modalCtrl.create({
+      component: ModalRegistrosComponent,
+      componentProps: { ingreso },
+      cssClass: 'modal-registro',
+    });
+    return await modal.present();
   }
 }

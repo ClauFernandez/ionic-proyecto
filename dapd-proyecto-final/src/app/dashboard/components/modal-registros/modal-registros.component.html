@@ -42,9 +42,8 @@
             formControlName="fecha"
           ></ion-input>
         </ion-item>
-
         <ion-item fill="outline" class="ion-margin">
-          <ion-label position="floating">Monto $</ion-label>
+          <ion-label position="floating">Monto</ion-label>
           <ion-input
             type="number"
             placeholder="Ingrese el monto"
@@ -63,7 +62,7 @@
                 *ngFor="let selectCategoria of keys(categoria)"
                 value="{{ selectCategoria }}"
               >
-                {{ selectCategoria }}</ion-select-option
+                {{ categoria[selectCategoria] }}</ion-select-option
               >
             </ion-select>
           </ion-item>

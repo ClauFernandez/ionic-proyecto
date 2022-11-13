@@ -11,7 +11,6 @@
       </ion-item>
       <div (click)="abrirActionSheet()" class="ion-padding" slot="content"><strong>{{item.titulo}}</strong> - {{item.fecha | date: 'dd/MM/YYYY'}}
       <br><br><ion-badge>{{item.categoria}}</ion-badge></div>
-        <!-- <button (click)="eliminarRegistroId(item)">borrar</button></div> -->
     </ion-accordion>
 </ion-accordion-group>
 
@@ -21,5 +20,5 @@
 </div>
 
 <!-- TOOD: eliminar estos botones cuando este listo el componente agregarRegistros -->
-<button (click)="abrirModal(true)">Ingreso</button>
-<button (click)="abrirModal(false)">Egreso</button>
+<!-- <button (click)="abrirModal(true)">Ingreso</button> -->
+<!-- <button (click)="abrirModal(false)">Egreso</button> -->

@@ -1,13 +1,21 @@
-<ion-list>
-    <div *ngFor="let item of registros">
-        <ion-item >
 
-            <ion-label><ion-icon *ngIf="item.ingreso ; else bloqueElse" color="success" name="arrow-up"></ion-icon>{{item.monto|currency}} <ion-icon color="danger" name="trash" (click)="eliminarRegistroId(item)"></ion-icon><br>&nbsp;&nbsp;&nbsp;{{item.titulo}} - {{item.fecha| date: 'dd/MM/YYYY'}} - {{item.categoria}}</ion-label>
-            <ng-template #bloqueElse><ion-icon color="danger" name="arrow-down"></ion-icon>-</ng-template>
-          
-        </ion-item>
-    </div>
 
-    <!-- TODO: Eliminar este botones, se usan para probar servicios, los pueden usar de ejemplo para crearlos en otros componentes -->
-    <!-- <ion-button color="success"(click)="crearRegistro()">Crear</ion-button>  TODO: eliminar cuando este listo el componente agregarRegistro--> 
-</ion-list>
+<ion-accordion-group  #accordionGroup *ngFor="let item of registros">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>
+        <ion-icon *ngIf="item.ingreso ; else bloqueElse" color="success" name="arrow-up"></ion-icon>
+        &nbsp; &nbsp; {{item.monto|currency}}
+        </ion-label>
+        <ng-template #bloqueElse><ion-icon color="danger" name="arrow-down"></ion-icon></ng-template>
+      </ion-item>
+      <div (click)= "abrirActionSheet()" class="ion-padding" slot="content"><strong>{{item.titulo}}</strong> {{item.fecha | date: 'dd/MM/YYYY'}}</div>
+    </ion-accordion>
+</ion-accordion-group>
+
+<div *ngIf ="noHayRegistros">
+        
+    <p style="text-align: center;">No hay registros.</p>
+</div>
+<button (click)="abrirModal(true)">Ingreso</button>
+<button (click)="abrirModal(false)">Egreso</button>

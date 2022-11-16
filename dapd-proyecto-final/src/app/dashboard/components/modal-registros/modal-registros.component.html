@@ -35,13 +35,30 @@
         </ion-item>
 
         <ion-item fill="outline" class="ion-margin">
-          <ion-label position="floating">Fecha</ion-label>
-          <ion-input
-            type="date"
-            placeholder="Ingrese una fecha"
-            formControlName="fecha"
-          ></ion-input>
+
+          <ion-label position="stacked">Fecha</ion-label>
+              
+          <ion-datetime-button datetime="datetime" slot="end"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              
+              <ion-datetime id="datetime"
+              mode="md"
+              presentation="date"  
+              name="Fecha"         
+              preferWheel="false"
+              [showDefaultButtons]="true" 
+              size="cover"
+              doneText="OK"
+              cancelText="Cancelar">
+              <span slot="title">Seleccione una fecha</span>
+              </ion-datetime>
+            </ng-template>
+          </ion-modal>      
+     
         </ion-item>
+        
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Monto</ion-label>
           <ion-input

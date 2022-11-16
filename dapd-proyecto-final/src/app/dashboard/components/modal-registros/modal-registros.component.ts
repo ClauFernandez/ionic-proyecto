@@ -1,3 +1,4 @@
+import { NgComponentOutlet } from "@angular/common";
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
@@ -38,6 +39,8 @@ export class ModalRegistrosComponent implements OnInit {
       categoria: new FormControl(null, [Validators.required]),
       ingreso: new FormControl(this.ingreso),
     });
+
+   
   }
 
   cancel() {

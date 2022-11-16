@@ -3,6 +3,7 @@ import { ActionSheetController} from '@ionic/angular';
 import { Registro } from '../../models/models';
 import { RegistroService } from '../../services/registro.service';
 import { AlertController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -72,4 +73,10 @@ export class RegistrosComponent implements OnInit {
   eliminarRegistroId(item: any){
     this.registroService.eliminarRegistro(item.id)
   }
+
+
 }
+ 
+ 
+
+

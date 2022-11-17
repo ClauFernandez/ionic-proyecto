@@ -51,6 +51,6 @@ export class ModalRegistrosComponent implements OnInit {
   }
 
   setFecha(event){
-    this.agregarRegistroForm.get('fecha').setValue(event.detail.value);
+    this.agregarRegistroForm.get('fecha').setValue(new Date(event.detail.value));
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController} from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 import { Registro } from '../../models/models';
 import { RegistroService } from '../../services/registro.service';
 import { AlertController } from '@ionic/angular';
@@ -14,26 +14,22 @@ import { DatePipe } from '@angular/common';
 export class RegistrosComponent implements OnInit {
 
   constructor(private registroService: RegistroService, public actionSheetController: ActionSheetController) { }
-  registro : Registro[] = []
+  registro: Registro[] = []
 
-  //valida si no hay registros
-  noHayRegistros : boolean = false;
+  noHayRegistros: boolean = false;
 
-  ngOnInit() : void {
-    this.registroService.registros
-    
-    // console.log(this.registroService.registros)//TODO: eliminar esta linea
+  ngOnInit(): void {
   }
 
-  ngDoCheck(){
+  ngDoCheck() {
     this.checkRegistros();
   }
 
-  get registros(){
+  get registros() {
     return this.registroService.registros;
   }
 
-  async abrirActionSheet(item: any){
+  async abrirActionSheet(item: any) {
     const actionSheet = await this.actionSheetController.create(
       {
         buttons: [
@@ -44,7 +40,7 @@ export class RegistrosComponent implements OnInit {
             data: {
               action: 'delete'
             },
-            handler: ()=>{
+            handler: () => {
               this.eliminarRegistroId(item)
             },
           },
@@ -58,25 +54,20 @@ export class RegistrosComponent implements OnInit {
           },
         ]
       });
-      actionSheet.present();
+    actionSheet.present();
   }
-  
- checkRegistros(){
-  let registros = this.registros;
-  if (registros.length == 0){
-    this.noHayRegistros = true;
-  }else{
-    this.noHayRegistros =false;
+
+  checkRegistros() {
+    let registros = this.registros;
+    if (registros.length == 0) {
+      this.noHayRegistros = true;
+    } else {
+      this.noHayRegistros = false;
+    }
   }
- }
-    
-  eliminarRegistroId(item: any){
+
+  eliminarRegistroId(item: any) {
     this.registroService.eliminarRegistro(item.id)
   }
-
-
 }
- 
- 
-
 

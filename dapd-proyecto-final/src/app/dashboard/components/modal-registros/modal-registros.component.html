@@ -12,78 +12,48 @@
     <form [formGroup]="agregarRegistroForm">
       <ion-card-content>
         <!--Input ID (oculto)-->
-        <ion-input
-          type="hidden"
-          placeholder="Detalle del registro"
-          formControlName="id"
-        ></ion-input>
+        <ion-input type="hidden" placeholder="Detalle del registro" formControlName="id"></ion-input>
 
         <!--Input tipo de registro (oculto): Boolean donde true es ingreso -->
-        <ion-input
-          type="hidden"
-          placeholder="Detalle del registro"
-          formControlName="ingreso"
-        ></ion-input>
+        <ion-input type="hidden" placeholder="Detalle del registro" formControlName="ingreso"></ion-input>
 
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Detalle</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Detalle del registro"
-            formControlName="titulo"
-          ></ion-input>
+          <ion-input type="text" placeholder="Detalle del registro" formControlName="titulo"></ion-input>
         </ion-item>
 
         <ion-item fill="outline" class="ion-margin">
-          <ion-label position="floating">Fecha</ion-label>
-          <ion-input
-            type="date"
-            placeholder="Ingrese una fecha"
-            formControlName="fecha"
-          ></ion-input>
+          <ion-label>Fecha</ion-label>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime [locale]="'es'" id="datetime" mode="md" presentation="date" name="Fecha" preferWheel="false"
+                [showDefaultButtons]="true" size="cover" doneText="OK" cancelText="Cancelar" (ionChange)="setFecha($event)">
+                <span slot="title">Seleccione una fecha</span>
+              </ion-datetime>
+            </ng-template>
+          </ion-modal>
         </ion-item>
+
         <ion-item fill="outline" class="ion-margin">
           <ion-label position="floating">Monto</ion-label>
-          <ion-input
-            type="number"
-            placeholder="Ingrese el monto"
-            formControlName="monto"
-          ></ion-input>
+          <ion-input type="number" placeholder="Ingrese el monto" formControlName="monto"></ion-input>
         </ion-item>
 
         <ion-list>
           <ion-item fill="outline" class="ion-margin-start ion-margin-end">
             <ion-label position="floating">Categoría</ion-label>
-            <ion-select
-              formControlName="categoria"
-              placeholder="Seleccione una categoría"
-            >
-              <ion-select-option
-                *ngFor="let selectCategoria of keys(categoria)"
-                value="{{ selectCategoria }}"
-              >
-                {{ categoria[selectCategoria] }}</ion-select-option
-              >
+            <ion-select formControlName="categoria" placeholder="Seleccione una categoría">
+              <ion-select-option *ngFor="let selectCategoria of keys(categoria)" value="{{ selectCategoria }}">
+                {{ categoria[selectCategoria] }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
 
-        <ion-button
-          [disabled]="agregarRegistroForm.invalid"
-          expand="block"
-          (click)="confirm()"
-          class="ion-margin"
-          color="primary"
-          >Guardar</ion-button
-        >
+        <ion-button [disabled]="agregarRegistroForm.invalid" expand="block" (click)="confirm()" class="ion-margin"
+          color="primary">Guardar</ion-button>
 
-        <ion-button
-          expand="block"
-          (click)="cancel()"
-          class="ion-margin"
-          color="medium"
-          >Cancelar</ion-button
-        >
+        <ion-button expand="block" (click)="cancel()" class="ion-margin" color="medium">Cancelar</ion-button>
       </ion-card-content>
     </form>
   </ion-card>

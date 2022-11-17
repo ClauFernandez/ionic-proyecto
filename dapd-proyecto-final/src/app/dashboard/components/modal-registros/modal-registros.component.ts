@@ -38,9 +38,7 @@ export class ModalRegistrosComponent implements OnInit {
       monto: new FormControl(null, [Validators.required, Validators.min(1)]),
       categoria: new FormControl(null, [Validators.required]),
       ingreso: new FormControl(this.ingreso),
-    });
-
-   
+    });   
   }
 
   cancel() {
@@ -50,5 +48,9 @@ export class ModalRegistrosComponent implements OnInit {
   confirm() {
     this.registroService.crearRegistro(this.agregarRegistroForm.value);
     this.modalCtrl.dismiss();
+  }
+
+  setFecha(event){
+    this.agregarRegistroForm.get('fecha').setValue(event.detail.value);
   }
 }

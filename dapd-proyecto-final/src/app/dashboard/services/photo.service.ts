@@ -50,9 +50,9 @@ export class PhotoService {
   public async addNewToGallery() {
     await Preferences.clear();
     // Take a photo
-      let capturedPhoto =  await Camera.getPhoto({
+    let capturedPhoto =  await Camera.getPhoto({
       resultType: CameraResultType.Uri, // file-based data; provides best performance
-      source: CameraSource.Prompt, // automatically take a new photo with the camera
+      source: CameraSource.Camera, // automatically take a new photo with the camera
       quality: 100, // highest quality (0 to 100)
     });
 
